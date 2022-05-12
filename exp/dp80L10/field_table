@@ -1,0 +1,157 @@
+# dp80L10
+
+######################### ZETAC CORE ARRAYS ########################
+
+# prognostic variables
+  "tracer", "atmos_mod"    ,  "ps"
+            "longname"     ,  "surface pressure"
+            "units"        ,  "Pa"
+            "diffuse_type" ,  "mechanical"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "uu"
+            "longname"     ,  "eastward wind speed"
+            "units"        ,  "m/s"
+            "equation"     ,  "flux_form"
+            "advect_horiz" ,  "finite_volume_line"
+            "advect_vert"  ,  "alt_second_centered"
+            "diffuse_type" ,  "mechanical"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "vv"
+            "longname"     ,  "northward wind speed"
+            "units"        ,  "m/s"
+            "equation"     ,  "flux_form"
+            "advect_horiz" ,  "finite_volume_line"
+            "advect_vert"  ,  "alt_second_centered"
+            "diffuse_type" ,  "mechanical"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "ta"
+            "longname"     ,  "temperature"
+            "units"        ,  "K"
+            "equation"     ,  "flux_form"
+            "advect_horiz" ,  "finite_volume_line"
+            "advect_vert"  ,  "alt_second_centered"
+            "diffuse_type" ,  "thermodynamic"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "qv"
+            "longname"     ,  "specific humidity"
+            "units"        ,  "kg/kg"
+            "equation"     ,  "flux_form"
+            "advect_horiz" ,  "finite_volume_line"
+            "advect_vert"  ,  "alt_second_centered"
+            "diffuse_type" ,  "thermodynamic"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "qc"
+            "longname"     ,  "cloud water specific humidity"
+            "units"        ,  "kg/kg"
+            "equation"     ,  "flux_form"
+            "advect_horiz" ,  "finite_volume_line"
+            "advect_vert"  ,  "alt_second_centered"
+            "diffuse_type" ,  "tracer"
+            "diffuse_horiz",  "fourth_order"
+/
+######################## core diagnostics  #########################
+
+  "tracer", "atmos_mod"    ,  "pp"
+            "longname"     ,  "pressure"
+            "units"        ,  "Pa"
+            "diffuse_type" ,  "mechanical"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "oo"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "sigma velocity"
+            "units"        ,  "1/s"
+            "diffuse_type" ,  "mechanical"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "om"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "pressure velocity"
+            "units"        ,  "Pa/s"
+            "diffuse_type" ,  "mechanical"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "rho"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "density"
+            "units"        ,  "kg/m3"
+            "diffuse_type" ,  "mass"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "gz"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "geopotential"
+            "units"        ,  "m2/s2"
+            "diffuse_type" ,  "mass"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "rh"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "relative humidty"
+            "units"        ,  "none"
+            "diffuse_type" ,  "mass"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "sd"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "dry entropy"
+            "units"        ,  "J/kg/K"
+            "diffuse_type" ,  "mass"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "sm"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "moist entropy"
+            "units"        ,  "J/kg/K"
+            "diffuse_type" ,  "mass"
+            "diffuse_horiz",  "fourth_order"
+/
+  "tracer", "atmos_mod"    ,  "rain"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "rain rate"
+            "units"        ,  "mm/day"
+/
+  "tracer", "atmos_mod"    ,  "dp"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "mass by layer"
+            "units"        ,  "Pa"
+/
+######################## reference arrays  #######################
+
+  "tracer", "atmos_mod"    ,  "ppref"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "reference-state pressure"
+            "units"        ,  "Pa"
+/
+  "tracer", "atmos_mod"    ,  "uuref"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "reference-state velocity"
+            "units"        ,  "m/s"
+/
+  "tracer", "atmos_mod"    ,  "taref"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "reference-state potential temperature"
+            "units"        ,  "K"
+/
+  "tracer", "atmos_mod"    ,  "qvref"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "reference-state vapor mixing ratio"
+            "units"        ,  "kg/kg"
+/
+########################## static arrays  #########################
+
+  "tracer", "atmos_mod"    ,  "topog"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "topography"
+            "units"        ,  "m"
+/
+  "tracer", "atmos_mod"    ,  "sst"
+            "tracer_type"  ,  "diagnostic"
+            "longname"     ,  "sea-surface temperature"
+            "units"        ,  "K"
+/

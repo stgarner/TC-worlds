@@ -1,0 +1,122 @@
+#NETCDF = /usr/local/netcdf
+#NETCDF = /work/pem/x86_64/netcdf-3.6.3/install_dir
+#NETCDF = /usr/local/netcdf-4.0.1
+MPICH2 = $(MPICH_DIR)
+#MPICH2 = /usr/local/mpich2
+
+ifeq ($(PE_ENV),PGI)
+   VERSION = pgi
+endif
+ifeq ($(PE_ENV),CRAY)
+   VERSION = cray
+endif
+ifeq ($(PE_ENV),INTEL)
+   VERSION = intel
+endif
+ifeq ($(PE_ENV),GNU)
+   VERSION = gnu
+endif
+ifeq ($(PE_ENV),PATHSCALE)
+   VERSION = pathscale
+endif
+
+NETCDF = ${CRAY_NETCDF_DIR}/netcdf-${VERSION}
+HDF5 = ${CRAY_HDF5_DIR}/hdf5-${VERSION}
+
+#FC = ifort -nowarn
+#LD = ifort
+#CC = icc
+FC = ftn -nowarn
+LD = ftn
+CC = cc
+
+#DEFS = -I${NETCDF}/include -I${MPICH2}/include
+
+CPPFLAGS = -Duse_netCDF -I${NETCDF}/include -I${HDF5}/include -I${MPICH2}/include 
+
+#DEF_FLAG = -i4 -r8 -ftz -stack_temps -safe_cray_ptr ${DEFS}
+
+#FFLAGS = ${DEF_FLAG} -O3
+FFLAGS = $(CPPFLAGS) -fno-alias -stack_temps -safe_cray_ptr -ftz -i_dynamic -assume byterecl -O3 -i4 -r8 -nowarn -Wp,-w -fp-model precise
+SHARED = 
+
+LIBS = -L${NETCDF}/lib -L${HDF5}/lib -L${MPICH2}/lib -lnetcdf -lnetcdff -lhdf5 -lhdf5_hl -lmpich
+#LIBS = -L${NETCDF}/lib -L/usr/local/mpich2/lib -lnetcdf -Vaxlib -lmpich
+LDFLAGS = $(FFLAGS) $(LIBS)
+
+#---------------------------------------------------------------------------
+# you should never need to change any lines below.
+
+# see the MIPSPro F90 manual for more details on some of the file extensions
+# discussed here.
+# this makefile template recognizes fortran sourcefiles with extensions
+# .f, .f90, .F, .F90. Given a sourcefile <file>.<ext>, where <ext> is one of
+# the above, this provides a number of default actions:
+
+# make <file>.T		create a CIF file
+# make <file>.L		create a compiler listing
+# make <file>.o		create an object file
+# make <file>.s		create an assembly listing
+# make <file>.x		create an executable file, assuming standalone
+#			source
+
+# make <file>.i		create a preprocessed file (only for .F and .F90
+#			extensions)
+
+# The macro TMPFILES is provided to slate files like the above for removal.
+
+RM = rm -f
+SHELL = /bin/csh -f
+TMPFILES = .*.m *.B *.L *.i *.l *.s *.mod
+
+.SUFFIXES: .F .F90 .H .L .T .f .f90 .h .i .o .s .x
+
+.f.L:
+	$(FC) $(FFLAGS) -c $(LIST) $*.f
+.f.T:
+	$(FC) $(FFLAGS) -c -cif $*.f
+.f.o:
+	$(FC) $(FFLAGS) -c $*.f
+.f.s:
+	$(FC) $(FFLAGS) -S $*.f
+.f.x:
+	$(FC) $(FFLAGS) -o $*.x $*.f *.o $(LDFLAGS)
+.f90.L:
+	$(FC) $(FFLAGS) -c $(LIST) $*.f90
+.f90.T:
+	$(FC) $(FFLAGS) -c -cif $*.f90
+.f90.o:
+	$(FC) $(FFLAGS) -c $*.f90
+.f90.s:
+	$(FC) $(FFLAGS) -c -S $*.f90
+.f90.x:
+	$(FC) $(FFLAGS) -o $*.x $*.f90 *.o $(LDFLAGS)
+.F.L:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c $(LIST) $*.F
+.F.T:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c -cif $*.F
+.F.f:
+	$(CPP) $(CPPDEFS) $(CPPFLAGS) $*.F > $*.f
+.F.i:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) -P $*.F
+.F.o:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c $*.F
+.F.s:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c -S $*.F
+.F.x:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -o $*.x $*.F *.o $(LDFLAGS)
+.F90.L:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c $(LIST) $*.F90
+.F90.T:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c -cif $*.F90
+.F90.f90:
+	$(CPP) $(CPPDEFS) $(CPPFLAGS) $*.F90 > $*.f90
+.F90.i:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) -P $*.F90
+.F90.o:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c $*.F90
+.F90.s:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -c -S $*.F90
+.F90.x:
+	$(FC) $(CPPDEFS) $(CPPFLAGS) $(FFLAGS) -o $*.x $*.F90 *.o $(LDFLAGS)
+

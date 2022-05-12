@@ -1,0 +1,15 @@
+A D/include////
+A D/include_caf////
+A D/include_common////
+A D/include_gsm////
+A D/include_mpi////
+A D/include_mpi_or_sma////
+A D/include_nocommunication////
+A D/include_sma////
+R D/include_sma////
+R D/include_nocommunication////
+R D/include_mpi_or_sma////
+R D/include_mpi////
+R D/include_gsm////
+R D/include_common////
+R D/include_caf////

@@ -1,0 +1,16 @@
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_axis_names.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_axis_names_mod.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_debug.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_debug_mod.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_driver_clocks.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_driver_clocks_mod.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_field_names.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_field_names_mod.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_math_con.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_math_con_mod.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_namelist.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_namelist_mod.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_phys_con.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_phys_con_mod.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_times.f90
+/home/fms/cvs/FMS/atmos/zetac/lib/taglog_zetac_times_mod.f90

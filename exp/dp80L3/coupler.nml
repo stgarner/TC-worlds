@@ -1,0 +1,16 @@
+&coupler_nml
+  current_date = 2000,   5,    10,   0, 0, 0
+  months   =    0
+  days     =   10
+  hours    =    0
+  minutes  =    0
+  seconds  =    0
+  dt_atmos =   30
+  calendar = 'julian'
+/
+&restart_nml
+  write_single_file = .true.
+/
+&fms_nml
+  print_memory_usage = .false.
+/
