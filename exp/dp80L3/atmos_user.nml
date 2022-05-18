@@ -1,0 +1,12 @@
+&reference_nml
+  lapse_rate = 95.0e-4
+  tsurf = 300.
+  diseq = 1.
+  rh0 = 0.7
+/
+&perturb_nml
+  ample     =  0.155
+  xscale    =  2.0
+  yscale    =  2.0
+  zscale    =  99.0
+/

@@ -1,0 +1,55 @@
+#!/bin/csh -v
+
+#PBS -o BBBBBB/exp/CCCCCC/JOBS/HHHHHH/
+#PBS -N zetac_store
+#PBS -A gfdl_w
+#PBS -l walltime=16:00:00
+#PBS -l size=1
+#PBS -q batch
+#PBS -j oe
+
+source $MODULESHOME/init/tcsh
+module unload fre
+#module load fre
+module load gcp
+
+#####################################################################
+# retrieve runtime parameter list
+#####################################################################
+
+  set expname     = CCCCCC
+  set identity    = HHHHHH
+  set segment     = SSSSSS
+  set datname     = ZZZZZZ
+
+#####################################################################
+# set the directories
+#####################################################################
+
+  set ARCDIR  = /lustre/f1/$USER/archive/zetac/$expname
+  set GFDLDIR = /archive/$USER/zetac/$expname
+
+#####################################################################
+# copy restart file to gfdl
+#####################################################################
+
+  set restart  = ${ARCDIR}/restart/${datname}.res.nc
+  if (-e ${restart}.tar) set restart = ${restart}.tar
+
+  echo "copying "$restart:t ; date
+
+  gcp gaea:$restart gfdl:${GFDLDIR}/restart/
+
+#####################################################################
+# copy history files to gfdl
+#####################################################################
+
+  set ncfiles = `/bin/ls ${ARCDIR}/history/${datname}*.nc`
+
+  foreach file ($ncfiles)
+     echo "copying "$file ; date
+     gcp gaea:$file gfdl:${GFDLDIR}/history/
+     echo "copied to "${GFDLDIR}/history/
+  end
+
+exit 0

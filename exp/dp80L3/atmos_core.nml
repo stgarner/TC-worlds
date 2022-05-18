@@ -1,0 +1,54 @@
+&mix_horiz_nml
+  kh2       =    0.0e4
+  kh4       =    0.0e14
+  tqfac     =    1.0
+  zonfac    =    1.0
+  mix_fast  =  .false.
+/
+&nudging_nml
+  nudgwidx  =   0.0
+  nudgwidy  =   0.0
+  nudgwidz  = 400.0e2
+  nudgfacx  =   0.0
+  nudgfacy  =   0.0
+  nudgfacz  =   1.0
+  nudgfacuv =   4.0e-6
+  nudgfactq =   4.0e-6
+/
+&sponge_nml
+  spngdepth = 400.0e2
+  rad_mean  = 300.0e3
+  spngfacuv = 0.00e-5
+  spngfactq = 0.0e-5
+  divergfac = 0.0e-5
+  ndt_mean =  8
+/
+&lateral_boundary_nml
+  cmin_w    =   0.0
+  cmin_e    =   0.0
+  cmin_s    =   0.0
+  cmin_n    =   0.0
+  cmax_w    =   0.0
+  cmax_e    =   0.0
+  cmax_s    =   0.0
+  cmax_n    =   0.0
+  no_diverge=.false.
+/
+&coriolis_nml
+  fconst  =   0.5e-4
+  beta    =   0.0
+/
+&time_filter_nml
+  robfac      =  0.05
+  ndt_forward =  0
+/
+&blowup_nml
+  tolerance =   60.0
+  tmin      =  140.0
+  tmax      =  365.0
+/
+&history_nml
+  pcrit = 950.e2
+  hmask = 0.0
+  nsteps_stdout = 30
+/

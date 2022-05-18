@@ -1,0 +1,120 @@
+#!/bin/csh -f
+
+#SBATCH -J sigma_combine
+#SBATCH -D BBBBBB/exp/CCCCCC/JOBS/HHHHHH
+#SBATCH -o BBBBBB/exp/CCCCCC/JOBS/HHHHHH/%x.o%j
+#SBATCH -t 1:00:00
+#SBATCH --partition=ldtn
+#SBATCH --cluster=es
+#SBATCH --mail-type=fail
+
+  unset echo
+
+#####################################################################
+# alias nccombine for different platforms
+#####################################################################
+
+  set basname  = BBBBBB
+  set expname  = CCCCCC
+  set identity = HHHHHH
+  set segment  = SSSSSS
+  set numsegs  = NNNNNN
+
+#####################################################################
+# set machine hardware type and operating system name
+#####################################################################
+
+  source $MODULESHOME/init/tcsh
+  module switch fre/bronx-19
+  alias nccombine  `which mppnccombine` -64
+#  alias nccombine  `which mppnccombine`
+
+#####################################################################
+# set directories
+#####################################################################
+
+  setenv RUNDIR $basname
+  setenv ARCDIR /lustre/f2/dev/$USER
+  setenv TMPDIR /lustre/f2/scratch/$USER
+  setenv ARCDIR $ARCDIR/zetac/$expname
+  setenv WRKDIR $TMPDIR/$identity
+  setenv HISDIR $ARCDIR/history
+  setenv JOBDIR $ARCDIR/jobs/$identity
+
+  if ( $numsegs == 1 ) then
+     setenv SEGDIR $HISDIR/$identity
+  else 
+     setenv SEGDIR $HISDIR/$identity/segment_$segment
+  endif
+
+  @ errnum = 0
+
+goto NOTAR
+
+  set hisfile = $SEGDIR/history.tar
+  if ( ! -e $hisfile ) goto NOFILE
+
+  if ( ! -d $WRKDIR/COMBINE ) mkdir -p $WRKDIR/COMBINE
+  cd  $WRKDIR/COMBINE
+
+  set list = `tar -tf $hisfile`
+
+  tar -xvf $hisfile
+  set ncfiles = `/bin/ls $list | grep nc.0000`
+  goto COMBINE
+
+NOTAR:
+
+cd  $SEGDIR
+set ncfiles = `/bin/ls *.nc.0000`
+
+COMBINE:
+
+  foreach file ($ncfiles)
+     set ncname = $file:r
+     echo ""
+     echo "combining "$ncname
+     if (-e $ncname) rm $ncname
+     nccombine $ncname
+     if ($status != 0) then
+        @ errnum = $errnum + 1
+	if (! -d FAIL) mkdir FAIL
+        mv $ncname.* FAIL
+        echo netcdf combine procedure failed for $ncname
+     else
+        if (-e $HISDIR/$ncname) then
+         mv $HISDIR/$ncname $HISDIR/old_$ncname
+           echo "renamed existing history file"
+        endif
+        mv $ncname $HISDIR
+        @ errnum = $errnum + $status
+        echo history file is $HISDIR/$ncname
+     endif
+  end
+
+#  if ( $errnum != 0 ) goto ERROR
+
+#####################################################################
+# submit runscript for transfer to GFDL
+#####################################################################
+
+#  set runscript = zetac_store.csh
+#  chmod +x $JOBDIR/bin/$runscript
+#  msub -q eslogin $JOBDIR/bin/$runscript
+
+DONE:
+#  rm -f *.nc.0*
+#  if ($segment == $numsegs) rm -fr $HISDIR/$identity
+  endif
+  exit
+
+ERROR:
+  echo ""
+  echo "netcdf combine procedure failed on "$errnum" file(s)"
+  echo "uncombined netcdf history files are saved in "$WRKDIR/COMBINE/FAIL
+  exit
+
+NOFILE:
+  echo ""
+  echo "cannot find file "$hisfile
+  exit

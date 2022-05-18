@@ -1,0 +1,39 @@
+#!/bin/csh -f
+
+#PBS -o BBBBBB/exp/CCCCCC/JOBS/HHHHHH/
+#PBS -N zetac_coldstart_store
+#PBS -l walltime=1:00:00
+#PBS -l size=1
+#PBS -q eslogin
+#PBS -j oe
+
+source $MODULESHOME/init/tcsh
+module unload fre
+module load fre
+
+#####################################################################
+# retrieve runtime parameter list
+#####################################################################
+
+  set expname     = CCCCCC
+  set identity    = HHHHHH
+  set datname     = ZZZZZZ
+
+#####################################################################
+# set the directories
+#####################################################################
+
+  set ARCDIR  = /lustre/f1/$USER/archive/zetac/$expname
+  set GFDLDIR = /archive/$USER/zetac/$expname
+
+#####################################################################
+# copy restart file to GFDL
+#####################################################################
+
+  set restart  = $ARCDIR/restart/${datname}.res.nc
+
+  echo "copying "$restart:t
+  
+  gcp gaea:$restart gfdl:$GFDLDIR/restart/
+
+exit 0

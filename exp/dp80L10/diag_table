@@ -1,0 +1,190 @@
+dp80L10
+2000 1 1 0 0 0
+
+"default",            6, "hours", 1, "hours" , "time"
+#"hourly",            1, "hours", 1, "hours" , "time"
+
+#---------------------------------------------------------------------
+
+# static variables
+
+"atmos_mod", "zetam" , "zetam" , "default", "all",.false., "none", 2
+"atmos_mod", "zetaw" , "zetaw" , "default", "all",.false., "none", 2
+#"atmos_mod", "zeem" ,  "zeem" ,  "default", "all",.false., "none", 2
+#"atmos_mod", "zeew" ,  "zeew" ,  "default", "all",.false., "none", 2
+#"atmos_mod", "zeem3d", "zeem3d", "default", "all",.false., "none", 2
+#"atmos_mod", "zeew3d", "zeew3d", "default", "all",.false., "none", 2
+
+#"atmos_mod", "topog", "topog", "default", "all",.false., "none", 2
+#"atmos_mod", "uuref", "uuref", "default", "all",.false., "none", 2
+#"atmos_mod", "exref", "exref", "default", "all",.false., "none", 2
+#"atmos_mod", "thref", "thref", "default", "all",.false., "none", 2
+#"atmos_mod", "qvref", "qvref", "default", "all",.false., "none", 2
+
+# core variables
+
+#"atmos_mod", "uu", "uu", "default", "all",.false., "none", 2
+#"atmos_mod", "vv", "vv", "default", "all",.false., "none", 2
+"atmos_mod", "oo", "oo", "default", "all",.false., "none", 2
+"atmos_mod", "ta", "ta", "default", "all",.false., "none", 2
+"atmos_mod", "gz", "gz", "default", "all",.false., "none", 2
+"atmos_mod", "fz", "fz", "default", "all",.false., "none", 2
+"atmos_mod", "qv", "qv", "default", "all",.false., "none", 2
+#"atmos_mod", "qc", "qc", "default", "all",.false., "none", 2
+
+# perturbation variables
+
+#"atmos_mod", "uu_pert", "uu_pert", "default", "all",.false., "none", 2
+#"atmos_mod", "vv_pert", "vv_pert", "default", "all",.false., "none", 2
+#"atmos_mod", "pp_pert", "pp_pert", "default", "all",.false., "none", 2
+#"atmos_mod", "ta_pert", "ta_pert", "default", "all",.false., "none", 2
+#"atmos_mod", "qv_pert", "qv_pert", "default", "all",.false., "none", 2
+#"atmos_mod", "gz_pert", "gz_pert", "default", "all",.false., "none", 2
+
+# derived variables
+
+"atmos_mod", "pp", "pp", "default", "all", .false., "none", 2
+"atmos_mod", "rh", "rh", "default", "all", .false., "none", 2
+#"atmos_mod", "sd", "sd", "default", "all", .false., "none", 2
+"atmos_mod", "sm", "sm", "default", "all", .false., "none", 2
+"atmos_mod", "um", "um", "default", "all", .false., "none", 2
+"atmos_mod", "vm", "vm", "default", "all", .false., "none", 2
+"atmos_mod", "om", "om", "default", "all", .false., "none", 2
+"atmos_mod", "vtot", "vtot", "default", "all", .false., "none", 2
+#"atmos_mod", "hdiv", "hdiv", "default", "all", .false., "none", 2
+#"atmos_mod", "vort", "vort", "default", "all", .false., "none", 2
+"atmos_mod", "tsurf", "tsurf", "default", "all", .false., "none", 2
+"atmos_mod", "qsurf", "qsurf", "default", "all", .false., "none", 2
+"atmos_mod", "hsurf", "hsurf", "default", "all", .false., "none", 2
+"atmos_mod", "ekin",  "ekin",  "default", "all", .false., "none", 2
+"atmos_mod", "epot",  "epot",  "default", "all", .false., "none", 2
+#"atmos_mod", "etot",  "etot",  "default", "all", .false., "none", 2
+"atmos_mod", "ekin_int", "ekin_int", "default", "all", .false., "none", 2
+"atmos_mod", "epot_int", "epot_int", "default", "all", .false., "none", 2
+
+# core diagnostics
+
+#"atmos_mod", "sdt_phys", "sdt_phys", "default", "all", .false., "none", 2
+#"atmos_mod", "sdt_diss", "sdt_diss", "default", "all", .false., "none", 2
+#"atmos_mod", "sdt_vdif", "sdt_vdif", "default", "all", .false., "none", 2
+#"atmos_mod", "sdt_drag", "sdt_drag", "default", "all", .false., "none", 2
+"atmos_mod", "tdt_cond",  "tdt_cond",  "default", "all", .false., "none", 2
+#"atmos_mod", "qdt_cond",  "qdt_cond",  "default", "all", .false., "none", 2
+"atmos_mod", "sdt_adv",  "sdt_adv",  "default", "all", .false., "none", 2
+"atmos_mod", "sdt_dry",  "sdt_dry",  "default", "all", .false., "none", 2
+"atmos_mod", "sdt_phys_int", "sdt_phys_int", "default", "all", .false., "none", 2
+"atmos_mod", "sdt_vdif_int", "sdt_vdif_int", "default", "all", .false., "none", 2
+"atmos_mod", "sdt_diss_int", "sdt_diss_int", "default", "all", .false., "none", 2
+"atmos_mod", "sdt_drag_int", "sdt_drag_int", "default", "all", .false., "none", 2
+"atmos_mod", "sdt_adv_int",  "sdt_adv_int",  "default", "all", .false., "none", 2
+"atmos_mod", "sdt_dry_int",  "sdt_dry_int",  "default", "all", .false., "none", 2
+
+#"atmos_mod", "qdt_nudge", "qdt_nudge", "default", "all", .false., "none", 2
+"atmos_mod", "tdt_phys", "tdt_phys", "default", "all", .false., "none", 2
+#"atmos_mod", "qdt_phys", "qdt_phys", "default", "all", .false., "none", 2
+"atmos_mod", "tdt_damp", "tdt_damp", "default", "all", .false., "none", 2
+"atmos_mod", "qdt_damp", "qdt_damp", "default", "all", .false., "none", 2
+#"atmos_mod", "udt_damp", "udt_damp", "default", "all", .false., "none", 2
+#"atmos_mod", "vdt_damp", "vdt_damp", "default", "all", .false., "none", 2
+"atmos_mod", "tdt_vdif", "tdt_vdif", "default", "all", .false., "none", 2
+"atmos_mod", "qdt_vdif", "qdt_vdif", "default", "all", .false., "none", 2
+"atmos_mod", "udt_vdif", "udt_vdif", "default", "all", .false., "none", 2
+"atmos_mod", "vdt_vdif", "vdt_vdif", "default", "all", .false., "none", 2
+#"atmos_mod", "qdt_drag", "qdt_drag", "default", "all", .false., "none", 2
+"atmos_mod", "alfomega", "alfomega", "default", "all", .false., "none", 2
+"atmos_mod", "kedt", "kedt", "default", "all", .false., "none", 2
+"atmos_mod", "pedt", "pedt", "default", "all", .false., "none", 2
+#"atmos_mod",  "pgfx",   "pgfx",   "default", "all", .false., "none", 2
+#"atmos_mod",  "pgfy",   "pgfy",   "default", "all", .false., "none", 2
+#"atmos_mod", "divdt_hpgf",   "divdt_hpgf",   "default", "all", .false., "none", 2
+"atmos_mod", "tdt_phys_int", "tdt_phys_int", "default", "all", .false., "none", 2
+"atmos_mod", "qdt_phys_int", "qdt_phys_int", "default", "all", .false., "none", 2
+"atmos_mod", "tdt_damp_int", "tdt_damp_int", "default", "all", .false., "none", 2
+"atmos_mod", "qdt_damp_int", "qdt_damp_int", "default", "all", .false., "none", 2
+#"atmos_mod", "udt_damp_int", "udt_damp_int", "default", "all", .false., "none", 2
+#"atmos_mod", "vdt_damp_int", "vdt_damp_int", "default", "all", .false., "none", 2
+"atmos_mod", "tdt_vdif_int", "tdt_vdif_int", "default", "all", .false., "none", 2
+"atmos_mod", "qdt_vdif_int", "qdt_vdif_int", "default", "all", .false., "none", 2
+#"atmos_mod", "udt_vdif_int", "udt_vdif_int", "default", "all", .false., "none", 2
+#"atmos_mod", "vdt_vdif_int", "vdt_vdif_int", "default", "all", .false., "none", 2
+"atmos_mod", "qdt_drag_int", "qdt_drag_int", "default", "all", .false., "none", 2
+"atmos_mod", "kedt_int", "kedt_int", "default", "all", .false., "none", 2
+"atmos_mod", "pedt_int", "pedt_int", "default", "all", .false., "none", 2
+
+# physics
+
+#"atmos_mod", "rain_conv", "rain_conv", "default", "all",.false., "none",2
+#"atmos_mod", "mc_conv",   "mc_conv",   "default", "all",.false., "none",2
+#"atmos_mod", "tdt_conv",  "tdt_conv",  "default", "all",.false., "none",2
+#"atmos_mod", "qdt_conv",  "qdt_conv",  "default", "all",.false., "none",2
+#"atmos_mod", "ldt_conv",  "ldt_conv",  "default", "all",.false., "none",2
+#"atmos_mod", "work_conv", "work_conv", "default", "all",.false., "none",2
+
+"atmos_mod", "rain_mp", "rain_mp", "default", "all",.false., "none",2
+#"atmos_mod", "tdt_mp",  "tdt_mp",  "default", "all",.false., "none",2
+#"atmos_mod", "qdt_mp",  "qdt_mp",  "default", "all",.false., "none",2
+#"atmos_mod", "ldt_mp",  "ldt_mp",  "default", "all",.false., "none",2
+
+#"atmos_mod", "tdt_ls",  "tdt_ls",  "default", "all",.false., "none",2
+
+#"atmos_mod", "cdm",  "cdm",  "default", "all",.false., "none",2
+#"atmos_mod", "cdh",  "cdh",  "default", "all",.false., "none",2
+
+# time-averaged diagnostics
+
+#"atmos_mod", "uu", "uu", "tmean", "all", .true., "none", 2
+#"atmos_mod", "vv", "vv", "tmean", "all", .true., "none", 2
+#"atmos_mod", "th", "th", "tmean", "all", .true., "none", 2
+#"atmos_mod", "qv", "qv", "tmean", "all", .true., "none", 2
+#"atmos_mod", "ww", "ww", "tmean", "all", .true., "none", 2
+#"atmos_mod", "ro", "ro", "tmean", "all", .true., "none", 2
+#"atmos_mod", "am", "am", "tmean", "all", .true., "none", 2 
+#"atmos_mod", "pp", "pp", "tmean", "all", .true., "none", 2
+#"atmos_mod", "ex", "ex", "tmean", "all", .true., "none", 2
+
+###########################################################################
+#global section
+
+#--------------------------------------------------------------------------
+
+###########################################################################
+#file section
+
+#file_name              = "name of output file"
+
+#output_frequency  
+#                       >  0  output frequency in "output_frequency_units"
+#                       =  0  output frequency every time step
+#                       = -1  output frequency at end of run
+
+#output_frequency_units = "units used for output frequency"
+#                         (years, months, days, minutes, hours, seconds)
+ 
+#format                 = 1 NetCDF
+
+#time_units             = "units used to label time axis"
+#                         (days, minutes, hours, or seconds)
+
+#time_long_name         = "time"
+
+###########################################################################
+#field section
+
+#module_name       = "atmos_mod", "land_mod",...
+
+#field_name        = "variable name used in module"
+
+#output_field_name = "name used in output"
+
+#file_name         = "name of output file"
+
+#time_sampling     = "all"
+
+#time_average      = .true. or .false.
+
+#other_opts        = "none"
+
+#packing           = 1  double precision
+#                  = 2  float
+#                  = 4  packed 16-bit integers
+#                  = 8  packed 1-byte (not tested)

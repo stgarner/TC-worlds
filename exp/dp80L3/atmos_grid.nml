@@ -1,0 +1,39 @@
+&grid_nml
+  ix           =  256
+  iy           =  256
+  iz           =    4
+  lxopen       =  .false.
+  lyopen       =  .false.
+  lcartesian   =  .true.
+  lcylindrical =  .false.
+  nsteps       =    3
+  nbuf         =    2
+/
+&region_nml
+  rlonmin    =  -40.0
+  rlonmax    =   40.0
+  rlatmin    =  -40.0
+  rlatmax    =   40.0
+/
+&vertical_nml
+  pbot  =  1013.0e2
+  ptop  =    50.0e2
+  zeta  =  0.0 0.4 0.9 1.0
+/
+&topog_data_nml
+  read_topog  =  .false.
+  read_sst    =  .false.
+/
+&topog_nml
+  hmnt =  0.0e3
+/
+&sst_nml
+  use_constant = .true.
+  sst_const = 200.
+/
+&fms_io_nml
+  threading_read  = 'multi' 
+/
+&mpp_io_nml
+  deflate_level = 1
+/
